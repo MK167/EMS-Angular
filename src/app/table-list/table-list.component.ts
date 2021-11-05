@@ -109,7 +109,7 @@ export class TableListComponent  implements AfterViewInit{
       IsEventDone: Boolean (Math.round(Math.random() * 1)),
       UserType: UserType[Math.round(Math.random() * (UserType.length - 1))],
       FromUniversity: FromUniversity[Math.round(Math.random() * (FromUniversity.length - 1))],
-      CollegeOfEvent: CollegeOfEvent[Math.round(Math.random() * (CollegeOfEvent.length - 1))]
+      CollegeOfEvent: CollegeOfEvent[Math.round(Math.random() * (CollegeOfEvent.length - 1))],
     };
     
   }

@@ -56,7 +56,7 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { YesNoPipe } from './Shared/pipes/yes-no.pipe';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

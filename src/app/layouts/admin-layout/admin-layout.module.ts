@@ -58,6 +58,38 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
+import { AddEventAttendanceComponent } from 'app/Admin-Components/add-event-attendance/add-event-attendance.component';
+import { AddEventCategoryComponent } from 'app/Admin-Components/add-event-category/add-event-category.component';
+import { AddEventDetailsComponent } from 'app/Admin-Components/add-event-details/add-event-details.component';
+import { AddEventStatusComponent } from 'app/Admin-Components/add-event-status/add-event-status.component';
+import { AddEventVenueComponent } from 'app/Admin-Components/add-event-venue/add-event-venue.component';
+import { AddGenderComponent } from 'app/Admin-Components/add-gender/add-gender.component';
+import { AddJobComponent } from 'app/Admin-Components/add-job/add-job.component';
+import { AddNationalityComponent } from 'app/Admin-Components/add-nationality/add-nationality.component';
+import { AddOrganizerComponent } from 'app/Admin-Components/add-organizer/add-organizer.component';
+import { AddUniversityComponent } from 'app/Admin-Components/add-university/add-university.component';
+import { AddUserAdminComponent } from 'app/Admin-Components/add-user-admin/add-user-admin.component';
+import { AddUserAttendComponent } from 'app/Admin-Components/add-user-attend/add-user-attend.component';
+import { AddUserImagesComponent } from 'app/Admin-Components/add-user-images/add-user-images.component';
+import { AddUserTypeComponent } from 'app/Admin-Components/add-user-type/add-user-type.component';
+
+import { EventAttendanceComponent } from 'app/Admin-Components/event-attendance/event-attendance.component';
+import { EventCategoryComponent } from 'app/Admin-Components/event-category/event-category.component';
+import { EventDetailsComponent } from 'app/Admin-Components/event-details/event-details.component';
+import { EventStatusComponent } from 'app/Admin-Components/event-status/event-status.component';
+import { EventVenueComponent } from 'app/Admin-Components/event-venue/event-venue.component';
+import { GenderComponent } from 'app/Admin-Components/gender/gender.component';
+import { JobComponent } from 'app/Admin-Components/job/job.component';
+import { NationalityComponent } from 'app/Admin-Components/nationality/nationality.component';
+import { OrganizerComponent } from 'app/Admin-Components/organizer/organizer.component';
+import { UniversityComponent } from 'app/Admin-Components/university/university.component';
+import { UserAdminComponent } from 'app/Admin-Components/user-admin/user-admin.component';
+import { UserAttendComponent } from 'app/Admin-Components/user-attend/user-attend.component';
+import { UserImagesComponent } from 'app/Admin-Components/user-images/user-images.component';
+import { UserTypeComponent } from 'app/Admin-Components/user-type/user-type.component';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -130,7 +162,37 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    YesNoPipe
+    YesNoPipe,
+    
+    AddEventAttendanceComponent,
+    AddEventCategoryComponent,
+    AddEventDetailsComponent,
+    AddEventStatusComponent,
+    AddEventVenueComponent,
+    AddGenderComponent,
+    AddJobComponent,
+    AddNationalityComponent,
+    AddOrganizerComponent,
+    AddUniversityComponent,
+    AddUserAdminComponent,
+    AddUserAttendComponent,
+    AddUserImagesComponent,
+    AddUserTypeComponent,
+    EventAttendanceComponent,
+    EventCategoryComponent,
+    EventDetailsComponent,
+    EventStatusComponent,
+    EventVenueComponent,
+    GenderComponent,
+    JobComponent,
+    NationalityComponent,
+    OrganizerComponent,
+    UniversityComponent,
+    UserAdminComponent,
+    UserAttendComponent,
+    UserImagesComponent,
+    UserTypeComponent
+
   ]
 })
 

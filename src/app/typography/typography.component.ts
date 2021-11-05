@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, FormBuilder, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-   
+declare var $: any;
+  
 
 
 interface Nationality {
@@ -11,6 +12,14 @@ interface Nationality {
 }
 
 interface UserType {
+  value: string;
+  viewValue: string;
+}
+interface University {
+  value: string;
+  viewValue: string;
+}
+interface Gender {
   value: string;
   viewValue: string;
 }
@@ -62,7 +71,7 @@ export class TypographyComponent implements OnInit {
   selected: Date | null;
 
 
-  constructor(fb : FormBuilder) { 
+constructor(fb : FormBuilder) { 
 this.AddForm = fb.group({
   Username: ['', Validators.required],
   Email:['',[Validators.required, Validators.email]],
@@ -71,11 +80,14 @@ this.AddForm = fb.group({
   Address:['', Validators.required],
   IsVip:['', Validators.required ],
   Nationality: ['', Validators.required ],
-  FromUniversity: ['', Validators.required ],
+  University: ['', Validators.required ],
   UserType: ['', Validators.required ],
   StartDate: ['', Validators.required ],
   EndDate: ['', Validators.required ],
-  College: ['', Validators.required ],
+  Organizer: ['', Validators.required ],
+  Gender: ['', Validators.required ],
+  Title: ['', Validators.required ],
+
 })
 
   }
@@ -90,6 +102,46 @@ this.AddForm = fb.group({
     {value: 'Event-Planner', viewValue: 'Event Planner'},
     {value: 'Founder', viewValue: 'Founder'}
   ];
+  University: University[] = [
+    {value: 'MUST', viewValue: 'MUST'},
+    {value: 'MIU', viewValue: 'MIU'},
+    {value: 'AUC', viewValue: 'AUC'}
+  ];
+  Gender: Gender[] = [
+    {value: 'Male', viewValue: 'Male'},
+    {value: 'Female', viewValue: 'Female'}
+  
+  ];
+
+  showNotification(from, align){
+    const type = ['','info','success','warning','danger'];
+
+    const color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+        icon: "notifications",
+        message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
+
+    },{
+        type: type[color],
+        timer: 4000,
+        placement: {
+            from: from,
+            align: align
+        },
+        template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
+          '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
+          '<i class="material-icons" data-notify="icon">notifications</i> ' +
+          '<span data-notify="title">{1}</span> ' +
+          '<span data-notify="message">{2}</span>' +
+          '<div class="progress" data-notify="progressbar">' +
+            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+          '</div>' +
+          '<a href="{3}" target="{4}" data-notify="url"></a>' +
+        '</div>'
+    });
+}
+
   ngOnInit() {
   }
 CheckData(){
