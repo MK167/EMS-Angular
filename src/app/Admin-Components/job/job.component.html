@@ -1,1 +1,47 @@
-<p>job works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                      <button mat-raised-button type="submit" class="btn btn-danger pull-right" style="background: white !important; color: black !important; font-weight: bold;">Add New Job </button>
+  
+                        <h4 class="card-title ">Job Table </h4>
+                        <p class="card-category"> You Can Show all data here</p>
+                    </div>
+                    <div class="card-body">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Search</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="Search with any coulmn" #input>
+                          </mat-form-field>
+                        
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead >
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Job Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let job of Jobs">
+                                    <td>{{job.jobID }} </td>
+                                    <td>{{job.jobName}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <button class="btn btn-secondary"><i class="fa fa-edit"></i> </button>
+                                            <button class="btn btn-danger" ><i class="fa fa-trash"></i> </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Jobs"></mat-paginator>                   
+                     </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>               
