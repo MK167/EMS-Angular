@@ -21,48 +21,25 @@ import { Subject } from 'rxjs';
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.css']
 })
-export class JobComponent implements OnInit, AfterViewInit {
+export class JobComponent implements OnInit{
   dtTrigger: Subject<any> = new Subject();
   
-  Jobs : IJobDTO;
-  displayedColumns: string[] = ['jobID', 'jobName', 'Actions'];
-  dataSource: MatTableDataSource<IJobDTO>;
+  Jobs : IJobDTO[] = [];
+  displayedColumns: string[] = ['jobID', 'jobName', 'actions'];
+  dataSource = new MatTableDataSource<IJobDTO>(this.Jobs);
   selection = new SelectionModel<IJobDTO>(true, []);
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected ===
-    numRows;
+
+   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    if (this.isAllSelected()) {
-      this.selection.clear();
-      return;
-    }
-
-    this.selection.select(...this.dataSource.data);
-  }
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    }
-
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-    }
 
   constructor(
     private JobService: JobService,
@@ -71,15 +48,23 @@ export class JobComponent implements OnInit, AfterViewInit {
     private dialog: MatDialog
   ) { }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
   ngOnInit(): void {
     this.LoadJobs();
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+
   }
 
   LoadJobs(){
-    this.JobService.GetAllJob().subscribe((data: IJobDTO) => {
-      this.Jobs = data;
-      console.log(this.Jobs);
-   });
+    this.JobService.GetAllJob().subscribe(data => {
+      this.Jobs = data; 
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      console.log(this.Jobs);}
+    );
   }
 
 }
