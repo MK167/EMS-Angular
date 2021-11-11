@@ -40,8 +40,8 @@ export class JobService {
   }
 
   // Edit/ Update 
-  UpdateJob(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateJob"}/${id}`, data).pipe(
+  UpdateJob(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateJob" , id).pipe(
       catchError(this.handleError)
     );
   }

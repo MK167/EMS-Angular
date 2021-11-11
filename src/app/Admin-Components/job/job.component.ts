@@ -1,3 +1,5 @@
+import { DialogService } from './../../Shared/dialog.service';
+import { AddJobComponent } from './../add-job/add-job.component';
 import { JobService } from './../../Services/Admin-Services/Job/job.service';
 import { IJobDTO } from './../../Models/IJobDTO';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -10,6 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AfterViewInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { NotificationsService } from 'app/Shared/notifications.service';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -25,7 +28,7 @@ export class JobComponent implements OnInit{
   dtTrigger: Subject<any> = new Subject();
   
   Jobs : IJobDTO[] = [];
-  displayedColumns: string[] = ['jobID', 'jobName', 'actions'];
+  displayedColumns: string[] = ['jobName', 'actions'];
   dataSource = new MatTableDataSource<IJobDTO>(this.Jobs);
   selection = new SelectionModel<IJobDTO>(true, []);
 
@@ -43,9 +46,9 @@ export class JobComponent implements OnInit{
 
   constructor(
     private JobService: JobService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private dialog: MatDialog
+    private notificationsService: NotificationsService,
+    private dialog: MatDialog,
+    private DialogService : DialogService
   ) { }
 
   ngAfterViewInit() {
@@ -67,4 +70,52 @@ export class JobComponent implements OnInit{
     );
   }
 
+  onDelete(id){
+    this.DialogService.OpenConfirmationDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res =>{
+      if(res){
+        this.JobService.DeleteJob(id).subscribe(res => {
+          this.Jobs = this.Jobs.filter(item => item.jobID !== id);
+          console.log('Job deleted successfully!');
+        });
+        this.notificationsService.warn('Deleted successfully !');
+      }
+    });
+  }
+
+  EditData(obj){
+    const dialogRef = this.dialog.open(AddJobComponent, {
+      disableClose : true,
+      autoFocus : true,
+      width : '600px',
+      height : '450px',
+      position: { top: "90px" },
+      data : obj
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    this.LoadJobs();
+    this.notificationsService.success('Updated successfully !');
+
+    });
+
+  }
+
+  AddNewJob() {
+    const dialogRef = this.dialog.open(AddJobComponent, {
+      disableClose : true,
+      autoFocus : true,
+      width : '600px',
+      height : '450px',
+      position: { top: "90px" },
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.LoadJobs();
+      this.notificationsService.success('Added Data successfully !');
+
+    });
+
+
+  }
 }

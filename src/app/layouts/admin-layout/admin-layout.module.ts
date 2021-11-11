@@ -87,6 +87,7 @@ import { UserAdminComponent } from 'app/Admin-Components/user-admin/user-admin.c
 import { UserAttendComponent } from 'app/Admin-Components/user-attend/user-attend.component';
 import { UserImagesComponent } from 'app/Admin-Components/user-images/user-images.component';
 import { UserTypeComponent } from 'app/Admin-Components/user-type/user-type.component';
+import { MatConfirmDialogComponent } from 'app/mat-confirm-dialog/mat-confirm-dialog.component';
 
 
 
@@ -163,7 +164,8 @@ import { UserTypeComponent } from 'app/Admin-Components/user-type/user-type.comp
     NotificationsComponent,
     UpgradeComponent,
     YesNoPipe,
-    
+    MatConfirmDialogComponent,
+
     AddEventAttendanceComponent,
     AddEventCategoryComponent,
     AddEventDetailsComponent,
