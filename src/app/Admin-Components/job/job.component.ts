@@ -5,12 +5,9 @@ import { IJobDTO } from './../../Models/IJobDTO';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { UserData } from 'app/table-list/table-list.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AfterViewInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NotificationsService } from 'app/Shared/notifications.service';
 

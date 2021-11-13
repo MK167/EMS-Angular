@@ -40,8 +40,8 @@ export class EventDetailsService {
   }
 
   // Edit/ Update 
-  UpdateEventDetails(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateEventDetails"}/${id}`, data).pipe(
+  UpdateEventAttendance(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateEventDetails" , id).pipe(
       catchError(this.handleError)
     );
   }

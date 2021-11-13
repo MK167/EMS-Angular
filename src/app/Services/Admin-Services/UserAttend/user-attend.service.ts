@@ -40,8 +40,8 @@ export class UserAttendService {
   }
 
   // Edit/ Update 
-  UpdateUserAttend(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateUserAttend"}/${id}`, data).pipe(
+  UpdateUserAttend(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateUserAttend" , id).pipe(
       catchError(this.handleError)
     );
   }

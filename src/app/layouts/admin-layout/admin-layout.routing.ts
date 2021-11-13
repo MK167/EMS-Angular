@@ -126,6 +126,4 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'User-Type',    component: UserTypeComponent ,canActivate:[AuthguardGuard]},
     { path: 'Add-User-Type',component: AddUserTypeComponent ,canActivate:[AuthguardGuard]},
 
-
-    { path: 'notifications',       component: NotificationsComponent ,canActivate:[AuthguardGuard]},
 ];

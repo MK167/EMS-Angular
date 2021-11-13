@@ -23,7 +23,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '/Event-venue'  ,    title: 'Event-venue',  icon:'apartment', class: '' },
     { path: '/Gender'       ,    title: 'Gender',  icon:'male', class: '' },
     { path: '/Job'          ,    title: 'Jobs',  icon:'work', class: '' },
-    { path: '/Nationality'  ,    title: 'Nationalities',  icon:'flag', class: '' },
     { path: '/Organizer'    ,    title: 'Organizers',  icon:'manage_accounts', class: '' },
     { path: '/University'   ,    title: 'Universities',  icon:'school', class: '' },
     { path: '/User-Admin'   ,    title: 'User Admins',  icon:'admin_panel_settings', class: '' },

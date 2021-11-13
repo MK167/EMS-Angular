@@ -40,8 +40,8 @@ export class UserImageService {
   }
 
   // Edit/ Update 
-  UpdateUserImage(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateUserImage"}/${id}`, data).pipe(
+  UpdateUserImage(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateUserImage" , id).pipe(
       catchError(this.handleError)
     );
   }

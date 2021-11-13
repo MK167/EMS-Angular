@@ -40,11 +40,12 @@ export class EventCategoryService {
   }
 
   // Edit/ Update 
-  UpdateEventCategory(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateEventCategory"}/${id}`, data).pipe(
+  UpdateEventCategory(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateEventCategory" , id).pipe(
       catchError(this.handleError)
     );
   }
+
 
   // Delete
   DeleteEventCategory(id: any): Observable<any> {

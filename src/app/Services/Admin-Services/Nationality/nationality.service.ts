@@ -40,12 +40,11 @@ export class NationalityService {
   }
 
   // Edit/ Update 
-  UpdateNationality(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateNationality"}/${id}`, data).pipe(
+  UpdateNationality(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateNationality" , id).pipe(
       catchError(this.handleError)
     );
   }
-
   // Delete
   DeleteNationality(id: any): Observable<any> {
     return this.httpClient.delete(`${this.baseUrl + this.apiUrlTable + "/DeleteNationality"}/${id}`).pipe(

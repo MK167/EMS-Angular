@@ -40,8 +40,8 @@ export class UserAdminService {
   }
 
   // Edit/ Update 
-  UpdateUserAdmin(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateUserAdmin"}/${id}`, data).pipe(
+  UpdateUserAdmin(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateUserAdmin" , id).pipe(
       catchError(this.handleError)
     );
   }

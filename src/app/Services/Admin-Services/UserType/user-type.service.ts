@@ -40,8 +40,8 @@ export class UserTypeService {
   }
 
   // Edit/ Update 
-  UpdateUserType(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateUserType"}/${id}`, data).pipe(
+  UpdateUserType(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateUserType" , id).pipe(
       catchError(this.handleError)
     );
   }

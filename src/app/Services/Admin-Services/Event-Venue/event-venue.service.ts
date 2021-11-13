@@ -40,8 +40,8 @@ export class EventVenueService {
   }
 
   // Edit/ Update 
-  UpdateEventVenue(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateEventVenue"}/${id}`, data).pipe(
+  UpdateEventVenue(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateEventVenue" , id).pipe(
       catchError(this.handleError)
     );
   }

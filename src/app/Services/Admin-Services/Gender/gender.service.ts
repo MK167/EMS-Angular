@@ -40,8 +40,8 @@ export class GenderService {
   }
 
   // Edit/ Update 
-  UpdateGender(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl  + this.apiUrlTable + "/UpdateGender"}/${id}`, data).pipe(
+  UpdateGender(id): Observable<any> {
+    return this.httpClient.put(this.baseUrl  + this.apiUrlTable + "/UpdateGender" , id).pipe(
       catchError(this.handleError)
     );
   }
